@@ -1,0 +1,50 @@
+{% extends 'layouts/index.html' %}
+
+{% block content %}
+    <style type="text/css">
+        .post_blog {
+            width: 80%;
+            margin-left: 10%;
+            margin-top: 50px;
+        }
+        .post_blog > img {
+            width: 100%;
+        }
+        .dates {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .comments {
+            margin-top: 30px;
+        }
+        .comment_blog {
+            background: darkviolet;
+            margin-bottom: 20px;
+            color: black;
+            padding: 10px;
+        }
+    </style>
+    <div class="post_blog">
+        {% if product.image %}
+            <img src="/media/{{ product.image }}" alt="oops!">
+        {% else %}
+            <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.charlotteathleticclub.com%2Fassets%2Fcamaleon_cms%2Fimage-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png&tbnid=PhwIv5U7lko00M&vet=12ahUKEwjXlInIv7v-AhXQxioKHdaOB3YQMygJegUIARDLAQ..i&imgrefurl=https%3A%2F%2Fwww.charlotteathleticclub.com%2Fthank-you&docid=jVq5CP2Ig0JLmM&w=584&h=387&q=image%20not%20found&ved=2ahUKEwjXlInIv7v-AhXQxioKHdaOB3YQMygJegUIARDLAQ" alt="">
+        {% endif %}
+        <div class="info">
+            <h1>{{ product.title }}</h1>
+            <h4>{{ product.description }}</h4>
+            <div class="dates">
+                <h5>Created date {{ product.created_date }}</h5>
+                <h5>Modified date {{ product.modified_date }}</h5>
+            </div>
+        </div>
+        <div class="comments">
+            {% for comment in comments%}
+                <div class="comment_blog">
+                    <h5>{{ comment.text }}</h5>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

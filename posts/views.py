@@ -22,6 +22,7 @@ def product_detail_view(request, id):
         products = Product.objects.get(id=id)
 
         context = {
-            'product': products
+            'product': products,
+            'comments': products.comment_set.all()
         }
         return render(request, 'products/detail.html', context=context)
