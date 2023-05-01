@@ -39,6 +39,15 @@
                 <h5>Modified date {{ product.modified_date }}</h5>
             </div>
         </div>
+        {% if not user.is_anonymous %}
+        <div class="creat_comments">
+            <form action="/products/{{ post.id }}/" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Add comment">
+            </form>
+        </div>>
+        {% endif %}
         <div class="comments">
             {% for comment in comments%}
                 <div class="comment_blog">
