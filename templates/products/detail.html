@@ -41,7 +41,7 @@
         </div>
         {% if not user.is_anonymous %}
         <div class="creat_comments">
-            <form action="/products/{{ post.id }}/" method="post">
+            <form action="/products/{{ product.id }}/" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <input type="submit" value="Add comment">
