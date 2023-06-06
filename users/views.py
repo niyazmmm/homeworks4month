@@ -72,3 +72,6 @@ class LogoutCBV(ListView):
     def get(self, request):
         logout(request)
         return redirect('/products/')
+
+
+
